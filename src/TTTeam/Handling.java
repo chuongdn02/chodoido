@@ -1,0 +1,175 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package TTTeam;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.*;
+
+/**
+ *
+ * @author chuon
+ */
+public class Handling {
+
+    public List<productdata> GetAllproductdata() {
+        List<productdata> PrData = new ArrayList<productdata>();
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from productdata");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                productdata PrD = new productdata();
+
+                PrD.setmaSP(result.getString("maSP"));
+                PrD.settenSP(result.getString("tenSp"));
+                PrD.setgia(result.getInt("gia"));
+                PrD.sethinhthuc(result.getString("HinhThuc"));
+                PrD.setnamsx(result.getInt("nam"));
+                PrData.add(PrD);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return PrData;
+    }
+
+    public List<WLproduct> GetAllWLproduct() {
+        List<WLproduct> PrWData = new ArrayList<WLproduct>();
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from WLproduct");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                WLproduct PrD1 = new WLproduct();
+
+                PrD1.setmaSP(result.getString("maSP"));
+                PrD1.settenSP(result.getString("tenSp"));
+                PrD1.setgia(result.getInt("gia"));
+                PrD1.sethinhthuc(result.getString("HinhThuc"));
+                PrD1.setnamsx(result.getInt("nam"));
+                PrWData.add(PrD1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return PrWData;
+    }
+
+    public List<AdminACC> GetAllAdminACC() {
+        List<AdminACC> accounts = new ArrayList<AdminACC>();
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from AdminACC");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                AdminACC ADacc = new AdminACC();
+
+                ADacc.setusername(result.getString("usernamer"));
+                ADacc.setPassword(result.getString("password"));
+
+                accounts.add(ADacc);
+            }
+            return accounts;
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<userACC> GetAlluserACC() {
+        List<userACC> account = new ArrayList<userACC>();
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from userACC");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                userACC Uacc = new userACC();
+
+                Uacc.setusername(result.getString("usernamer"));
+                Uacc.setPassword(result.getString("password"));
+
+                account.add(Uacc);
+            }
+            return account;
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public AdminACC SigninAdmin(String username) {
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from AdminACC");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                if (result.getString("username").equals(username)) {
+                    AdminACC adacc = new AdminACC();
+                    System.out.println(username);
+                    adacc.setusername(result.getString("username"));
+                    adacc.setPassword(result.getString("password"));
+
+                    return adacc;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public userACC SigninUSER(String username) {
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from userACC");
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                if (result.getString("username").equals(username)) {
+                    userACC uacc = new userACC();
+                    System.out.println(username);
+                    uacc.setusername(result.getString("username"));
+                    uacc.setPassword(result.getString("password"));
+
+                    return uacc;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void SignupAccount(userACC account) {
+        Connection conn = Connect.ConnectSQL();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("insert into Account values (?,?)");
+            ps.setString(1, account.getusername());
+            ps.setString(2, account.getPassword());
+            int result = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
+}
