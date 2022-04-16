@@ -16,15 +16,16 @@ import models.userACC;
 public class signUp extends javax.swing.JFrame {
 
     Handling handle;
+
     /**
      * Creates new form Sigup
      */
     public signUp() {
         handle = new Handling();
-        
+
         initComponents();
         setLocationRelativeTo(null);
-        Color mycolor=new Color(229,255,251);
+        Color mycolor = new Color(229, 255, 251);
         this.getContentPane().setBackground(mycolor);
     }
 
@@ -149,7 +150,6 @@ public class signUp extends javax.swing.JFrame {
     }//GEN-LAST:event_backSiginButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-
         if(IDTF.getText().equals("") ||
             String.valueOf(passwordTF.getPassword()).equals("") ||
             String.valueOf(confirmPasswordTF.getPassword()).equals("")) {
@@ -180,6 +180,7 @@ public class signUp extends javax.swing.JFrame {
             this.dispose();
             new signIn().setVisible(true);
         }
+               
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**

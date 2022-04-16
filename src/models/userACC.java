@@ -12,7 +12,7 @@ public class userACC {
     String username,password;
 public userACC() {
     }
-    public userACC(String id, String password) {
+    public userACC(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -12,7 +12,7 @@ public class AdminACC {
     String username,password;
     public AdminACC() {
     }
-    public AdminACC(String id, String password) {
+    public AdminACC(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -25,11 +25,11 @@ public class AdminACC {
         this.username = username;
     }
 
-    public String getPassword() {
+    public String getADPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setADPassword(String password) {
         this.password = password;
     }
 }

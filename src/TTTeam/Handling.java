@@ -77,7 +77,7 @@ public class Handling {
                 AdminACC ADacc = new AdminACC();
 
                 ADacc.setusername(result.getString("usernamer"));
-                ADacc.setPassword(result.getString("password"));
+                ADacc.setADPassword(result.getString("password"));
 
                 accounts.add(ADacc);
             }
@@ -89,7 +89,7 @@ public class Handling {
     }
 
     public List<userACC> GetAlluserACC() {
-        List<userACC> account = new ArrayList<userACC>();
+        List<userACC> accounts = new ArrayList<userACC>();
         Connection conn = Connect.ConnectSQL();
 
         try {
@@ -99,12 +99,12 @@ public class Handling {
             while (result.next()) {
                 userACC Uacc = new userACC();
 
-                Uacc.setusername(result.getString("usernamer"));
+                Uacc.setusername(result.getString("username"));
                 Uacc.setPassword(result.getString("password"));
 
-                account.add(Uacc);
+                accounts.add(Uacc);
             }
-            return account;
+            return accounts;
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -123,7 +123,7 @@ public class Handling {
                     AdminACC adacc = new AdminACC();
                     System.out.println(username);
                     adacc.setusername(result.getString("username"));
-                    adacc.setPassword(result.getString("password"));
+                    adacc.setADPassword(result.getString("password"));
 
                     return adacc;
                 }
@@ -161,7 +161,7 @@ public class Handling {
         Connection conn = Connect.ConnectSQL();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into Account values (?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into userACC values (?,?)");
             ps.setString(1, account.getusername());
             ps.setString(2, account.getPassword());
             int result = ps.executeUpdate();
