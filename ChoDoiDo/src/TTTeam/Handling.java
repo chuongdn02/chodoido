@@ -99,9 +99,10 @@ public class Handling {
             while (result.next()) {
                 userACC Uacc = new userACC();
 
-                Uacc.setusername(result.getString("username"));
+                Uacc.setname(result.getString("name"));
                 Uacc.setPassword(result.getString("password"));
-
+                Uacc.setaddress(result.getString("address"));
+                Uacc.setphone(result.getString("phone"));
                 accounts.add(Uacc);
             }
             return accounts;
@@ -134,7 +135,7 @@ public class Handling {
         return null;
     }
 
-    public userACC SigninUSER(String username) {
+    public userACC SigninUSER(String phoneNumber) {
         Connection conn = Connect.ConnectSQL();
 
         try {
@@ -142,10 +143,10 @@ public class Handling {
             ResultSet result = ps.executeQuery();
 
             while (result.next()) {
-                if (result.getString("username").equals(username)) {
+                if (result.getString("phone").equals(phoneNumber)) {
                     userACC uacc = new userACC();
-                    System.out.println(username);
-                    uacc.setusername(result.getString("username"));
+                    System.out.println(phoneNumber);
+                    uacc.setphone(result.getString("phone"));
                     uacc.setPassword(result.getString("password"));
 
                     return uacc;
@@ -161,9 +162,11 @@ public class Handling {
         Connection conn = Connect.ConnectSQL();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into userACC values (?,?)");
-            ps.setString(1, account.getusername());
+            PreparedStatement ps = conn.prepareStatement("insert into userACC values (?,?,?,?)");
+            ps.setString(1, account.getphone());
             ps.setString(2, account.getPassword());
+            ps.setString(3, account.getname());
+            ps.setString(4, account.getaddress());
             int result = ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);

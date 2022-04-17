@@ -48,6 +48,11 @@ public class signUp extends javax.swing.JFrame {
         backSiginButton = new javax.swing.JButton();
         passwordTF = new javax.swing.JPasswordField();
         submitButton = new javax.swing.JButton();
+        nameTF = new javax.swing.JTextField();
+        nameLB = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        addressTA = new javax.swing.JTextArea();
+        addressLB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +62,7 @@ public class signUp extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
-        jLabel10.setText("username:");
+        jLabel10.setText("PhoneNumber:");
 
         jLabel4.setText("Confirm Password:");
 
@@ -84,34 +89,50 @@ public class signUp extends javax.swing.JFrame {
             }
         });
 
+        nameLB.setText("Name:");
+
+        addressTA.setColumns(20);
+        addressTA.setRows(5);
+        jScrollPane1.setViewportView(addressTA);
+
+        addressLB.setText("Address:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(confirmPasswordTF))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(IDTF, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(backSiginButton)
-                        .addGap(104, 104, 104)
-                        .addComponent(submitButton)
+                        .addContainerGap()
+                        .addComponent(backSiginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancelButton)))
-                .addGap(80, 80, Short.MAX_VALUE))
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(38, 38, 38)
+                            .addComponent(IDTF, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addressLB, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1)
+                                .addComponent(confirmPasswordTF)
+                                .addComponent(nameTF)))))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,12 +150,21 @@ public class signUp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLB, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressLB, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(submitButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backSiginButton)
-                    .addComponent(cancelButton)
-                    .addComponent(submitButton))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(cancelButton))
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -150,37 +180,37 @@ public class signUp extends javax.swing.JFrame {
     }//GEN-LAST:event_backSiginButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        if(IDTF.getText().equals("") ||
-            String.valueOf(passwordTF.getPassword()).equals("") ||
-            String.valueOf(confirmPasswordTF.getPassword()).equals("")) {
+        if (IDTF.getText().equals("")
+                ||nameTF.getText().equals("")
+                ||addressTA.getText().equals("")
+                || String.valueOf(passwordTF.getPassword()).equals("")
+                || String.valueOf(confirmPasswordTF.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please enter all fields",
-                "WARNING", JOptionPane.WARNING_MESSAGE);
+                    "WARNING", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if(!String.valueOf(passwordTF.getPassword())
-            .equals(String.valueOf(confirmPasswordTF.getPassword())))
-        {
+        if (!String.valueOf(passwordTF.getPassword())
+                .equals(String.valueOf(confirmPasswordTF.getPassword()))) {
             JOptionPane.showMessageDialog(rootPane, "Password confirm not match!!",
-                "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
             List<userACC> accounts = handle.GetAlluserACC();
-            for(userACC acc : accounts) {
-                if(acc.getusername().equals(IDTF.getText())) {
+            for (userACC acc : accounts) {
+                if (acc.getphone().equals(IDTF.getText())) {
                     JOptionPane.showMessageDialog(rootPane, "Account name already exists!",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
+                            "ERROR", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
-            userACC account = new userACC(IDTF.getText(),String.valueOf(passwordTF.getPassword()));
-
+            userACC account = new userACC(IDTF.getText(),String.valueOf(passwordTF.getPassword()),nameTF.getText(),addressTA.getText());
             handle.SignupAccount(account);
             JOptionPane.showMessageDialog(rootPane, "Success!\n Go to Login");
             this.dispose();
             new signIn().setVisible(true);
         }
-               
+
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
@@ -220,6 +250,8 @@ public class signUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IDTF;
+    private javax.swing.JLabel addressLB;
+    private javax.swing.JTextArea addressTA;
     private javax.swing.JButton backSiginButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JPasswordField confirmPasswordTF;
@@ -227,6 +259,9 @@ public class signUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameLB;
+    private javax.swing.JTextField nameTF;
     private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
