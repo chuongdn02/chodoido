@@ -184,8 +184,8 @@ public class Handling {
             ps.setString(1, PrD.getid());
             ps.setString(2, PrD.getname());
             ps.setString(3, PrD.getprice());
-            ps.setString(4, PrD.getdes());
-            ps.setString(5, PrD.gettitle());
+            ps.setString(4,PrD.gettitle());
+            ps.setString(5, PrD.getdes());
 
             int result = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -193,11 +193,11 @@ public class Handling {
         }
     }
 
-    public void DeleteProductData(String id) {
+    public void DeleteWLine(String id) {
         Connection conn = connection.getJDBCConnection();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("delete from product where id = ?");
+            PreparedStatement ps = conn.prepareStatement("delete from WLine where id = ?");
             ps.setString(1, id);
 
             int result = ps.executeUpdate();
@@ -206,20 +206,25 @@ public class Handling {
         }
     }
 
-    public void UpdateProductData(product PrD) {
+    public void ShowtData(product PrD) {
         Connection conn = connection.getJDBCConnection();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("update product "
-                    + "set name = ?,price = ?,des = ?,title = ?"
-                    + "where id = ?");
+            PreparedStatement ps = conn.prepareStatement("select * from product, user");
+            ResultSet result = ps.executeQuery();
+            product PrD3 = new product();
+            user u = new user();
 
-            ps.setString(1, PrD.getname());
-            ps.setString(2, PrD.getprice());
-            ps.setString(3, PrD.getdes());
-            ps.setString(4, PrD.gettitle());
-            ps.setString(5, PrD.getid());
-            int result = ps.executeUpdate();
+                PrD3.setid(result.getString("id"));
+                PrD3.setname(result.getString("name"));
+                PrD3.setprice(result.getString("price"));
+                PrD3.setdes(result.getString("des"));
+                PrD3.settitle(result.getString("title"));
+                u.setname(result.getString("name"));
+                u.setphone(result.getString("phone"));
+                u.setsex(result.getString("sex"));
+                u.setadd(result.getString("add"));
+                
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
