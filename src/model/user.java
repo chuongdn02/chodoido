@@ -9,12 +9,13 @@ package model;
  * @author macpro
  */
 public class user {
-  String phone, pass, name, add, sex;
+
+    private String phone, pass, name, add, sex;
 
     public user() {
     }
 
-    public user(String phone,String pass, String name, String add,String sex) {
+    public user(String phone, String pass, String name, String add, String sex) {
         this.pass = pass;
         this.name = name;
         this.add = add;
@@ -53,6 +54,7 @@ public class user {
     public void setadd(String sex) {
         this.sex = sex;
     }
+
     public String getsex() {
         return sex;
     }

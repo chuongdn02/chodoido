@@ -9,13 +9,14 @@ package model;
  * @author macpro
  */
 public class product {
-  String id, name, des,price,title;
+    private int id;
+   private String name, des,price,title;
     
 
     public product() {
     }
 
-    public product(String id, String name, String price, String des, String title) {
+    public product(int id, String name, String price, String des, String title) {
         this.id = id;
         this.name = name;
         this.des = des;
@@ -23,11 +24,11 @@ public class product {
         this.title = title;
     }
 
-    public String getid() {
+    public int getid() {
         return id;
     }
 
-    public void setid(String id) {
+    public void setid(int id) {
         this.id = id;
     }
 

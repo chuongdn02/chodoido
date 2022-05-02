@@ -52,7 +52,7 @@ public class regis extends javax.swing.JFrame {
         phone = new javax.swing.JTextField();
         name = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        add = new javax.swing.JTextArea();
+        addr = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
@@ -86,9 +86,9 @@ public class regis extends javax.swing.JFrame {
             }
         });
 
-        add.setColumns(20);
-        add.setRows(5);
-        jScrollPane1.setViewportView(add);
+        addr.setColumns(20);
+        addr.setRows(5);
+        jScrollPane1.setViewportView(addr);
 
         jLabel8.setText("sex");
 
@@ -228,7 +228,7 @@ public class regis extends javax.swing.JFrame {
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
 if (phone.getText().equals("")
                 ||name.getText().equals("")
-                ||address.getText().equals("")
+                ||addr.getText().equals("")
                 || String.valueOf(pass.getPassword()).equals("")
                 || String.valueOf(cfpass.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please enter all fields",
@@ -242,7 +242,7 @@ if (phone.getText().equals("")
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         } else {
-            List<user> accounts = handle.GetAlluser();
+            List<user> accounts = Handling.GetAlluser();
             for (user acc : accounts) {
                 if (acc.getphone().equals(phone.getText())) {
                     JOptionPane.showMessageDialog(rootPane, "Account name already exists!",
@@ -256,11 +256,12 @@ if (phone.getText().equals("")
             if(female.isSelected()){
                 gender+="nu";
             }
-            user account = new user(phone.getText(),String.valueOf(pass.getPassword()),name.getText(),address.getText(),gender);
+            user account = new user(phone.getText(),String.valueOf(pass.getPassword()),name.getText(),addr.getText(),gender);
             handle.SignupAccount(account);
             JOptionPane.showMessageDialog(rootPane, "Success!\n Go to Login");
-            this.dispose();
             new login().setVisible(true);
+            this.dispose();
+            
             }
         }     // TODO add your handling code here:
     }//GEN-LAST:event_signupActionPerformed
@@ -310,7 +311,7 @@ if (phone.getText().equals("")
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea add;
+    private javax.swing.JTextArea addr;
     private javax.swing.JLabel address;
     private javax.swing.JButton back;
     private javax.swing.ButtonGroup buttonGroup1;

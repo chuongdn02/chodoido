@@ -18,7 +18,7 @@ import model.*;
  */
 public class Handling {
 
-    public List<product> GetAllproduct() {
+    public static List<product> GetAllproduct() {
         List<product> PrData = new ArrayList<product>();
         Connection conn = connection.getJDBCConnection();
 
@@ -29,7 +29,7 @@ public class Handling {
             while (result.next()) {
                 product PrD = new product();
 
-                PrD.setid(result.getString("id"));
+                PrD.setid(result.getInt("idProduct"));
                 PrD.setname(result.getString("name"));
                 PrD.setprice(result.getString("price"));
                 PrD.setdes(result.getString("des"));
@@ -89,7 +89,7 @@ public class Handling {
         return null;
     }
 
-    public List<user> GetAlluser() {
+    public static List<user> GetAlluser() {
         List<user> accounts = new ArrayList<user>();
         Connection conn = connection.getJDBCConnection();
 
@@ -104,7 +104,7 @@ public class Handling {
                 Uacc.setphone(result.getString("phone"));
                 Uacc.setpass(result.getString("pass"));
                 Uacc.setsex(result.getString("sex"));
-                Uacc.setadd(result.getString("add"));
+                Uacc.setadd(result.getString("adr"));
                 accounts.add(Uacc);
             }
             return accounts;
@@ -164,7 +164,7 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into user values (?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into user(phone,pass,name,adr,sex) value (?,?,?,?,?)");
             ps.setString(1, account.getphone());
             ps.setString(2, account.getpass());
             ps.setString(3, account.getname());
@@ -180,11 +180,11 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into product values (?,?,?,?,?)");
-            ps.setString(1, PrD.getid());
+            PreparedStatement ps = conn.prepareStatement("insert into product(id,name,price,title,des) value (?,?,?,?,?)");
+            ps.setInt(1, PrD.getid());
             ps.setString(2, PrD.getname());
             ps.setString(3, PrD.getprice());
-            ps.setString(4,PrD.gettitle());
+            ps.setString(4, PrD.gettitle());
             ps.setString(5, PrD.getdes());
 
             int result = ps.executeUpdate();
@@ -215,49 +215,48 @@ public class Handling {
             product PrD3 = new product();
             user u = new user();
 
-                PrD3.setid(result.getString("id"));
-                PrD3.setname(result.getString("name"));
-                PrD3.setprice(result.getString("price"));
-                PrD3.setdes(result.getString("des"));
-                PrD3.settitle(result.getString("title"));
-                u.setname(result.getString("name"));
-                u.setphone(result.getString("phone"));
-                u.setsex(result.getString("sex"));
-                u.setadd(result.getString("add"));
-                
+            PrD3.setid(result.getInt("id"));
+            PrD3.setname(result.getString("name"));
+            PrD3.setprice(result.getString("price"));
+            PrD3.setdes(result.getString("des"));
+            PrD3.settitle(result.getString("title"));
+            u.setname(result.getString("name"));
+            u.setphone(result.getString("phone"));
+            u.setsex(result.getString("sex"));
+            u.setadd(result.getString("adr"));
+
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public List<product> GetResultSearch(String searchType, String  valueSearch) {
+    public List<product> GetResultSearch(String searchType, String valueSearch) {
         List<product> PrData = new ArrayList<>();
         Connection conn = connection.getJDBCConnection();
 
         try {
             PreparedStatement ps = null;
-            switch(searchType) {
-            case "id" : 
-                 ps = conn.prepareStatement("select * from product where id = ?");
-                ps.setObject(1, valueSearch);  
-                break;
-             
-            case "name" : 
-                 ps = conn.prepareStatement("select * from product where name = ?");
-                ps.setObject(1, valueSearch);  
-                break;
+            switch (searchType) {
+                case "id":
+                    ps = conn.prepareStatement("select * from product where id = ?");
+                    ps.setObject(1, valueSearch);
+                    break;
+
+                case "name":
+                    ps = conn.prepareStatement("select * from product where name = ?");
+                    ps.setObject(1, valueSearch);
+                    break;
             }
 
             ResultSet result = ps.executeQuery();
             while (result.next()) {
                 product PrD = new product();
-                PrD.setid(result.getString("id"));            
+                PrD.setid(result.getInt("id"));
                 PrD.setname(result.getString("name"));
                 PrD.setprice(result.getString("price"));
                 PrD.settitle(result.getString("title"));
                 PrD.setdes(result.getString("des"));
-                
-                
+
                 PrData.add(PrD);
             }
             return PrData;
@@ -265,5 +264,127 @@ public class Handling {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static Detail getInfo(int id) {
+        Detail de = new Detail();
+        Connection conn = connection.getJDBCConnection();
+        try {
+            //String sql = "select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = 1";
+            PreparedStatement preparedStatement = conn.prepareStatement("select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = " + id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                de.setTitle(resultSet.getString("title"));
+                de.setPrice(resultSet.getString("price"));
+                de.setDes(resultSet.getString("des"));
+                de.setName(resultSet.getString("user.name"));
+                de.setPhone(resultSet.getString("phone"));
+                de.setAddr(resultSet.getString("adr"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return de;
+    }
+
+    public static void SelectID(int id) {
+        Connection conn = connection.getJDBCConnection();
+        try {
+            //String sql = "insert into selectID values(?)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement("insert into selectID(id) value(?)");
+            preparedStatement.setInt(1, id);
+            int result = preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static int getID() {
+        Connection conn = connection.getJDBCConnection();
+        int id = 0;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("select id from selectID");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+    public static void RemoveID(int id) {
+        Connection conn = connection.getJDBCConnection();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID where id =?");
+            preparedStatement.setInt(1, id);
+            int result = preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static void SelectPhone(String phone) {
+        Connection conn = connection.getJDBCConnection();
+        try {
+            //String sql = "insert into selectID values(?)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement("insert into selectID(phoneNumber) values(?)");
+            preparedStatement.setString(1, phone);
+            int result = preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static String getPhone() {
+        Connection conn = connection.getJDBCConnection();
+        String phone = null;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("select phoneNumber from selectID");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                phone = resultSet.getString("phoneNumber");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return phone;
+    }
+    
+    public static int getIDPhone() {
+        Connection conn = connection.getJDBCConnection();
+        int id = 0;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("select id from user where phone = ?");
+            preparedStatement.setString(1, Handling.getPhone());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+    public static void RemovePhone() {
+        Connection conn = connection.getJDBCConnection();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID");
+            
+            int result = preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static void main(String[] args) {
+        SelectID(2);
     }
 }
