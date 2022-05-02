@@ -215,6 +215,7 @@ public class login extends javax.swing.JFrame {
         }
         user loginS = handle.SigninUSER(phone.getText());
         admin login = handle.Signinadmin(phone.getText());
+        Handling.SelectPhone(phone.getText());
         if (loginS != null) {
             if (!loginS.getpass().equals(String.valueOf(pass.getPassword()))) {
                 JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
