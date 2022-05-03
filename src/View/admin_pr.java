@@ -17,7 +17,8 @@ import model.product;
  * @author macpro
  */
 public class admin_pr extends javax.swing.JFrame {
-DefaultTableModel tableModel;
+
+    DefaultTableModel tableModel;
     Handling handle;
 
     /**
@@ -27,7 +28,7 @@ DefaultTableModel tableModel;
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
-         Color mycolor = new Color(229, 255, 251);
+        Color mycolor = new Color(229, 255, 251);
         this.getContentPane().setBackground(mycolor);
 
         tableModel = new DefaultTableModel() {
@@ -37,11 +38,12 @@ DefaultTableModel tableModel;
             }
 
         };
-
+        tableModel.addColumn("id");
+        tableModel.addColumn("idUser");
         tableModel.addColumn("title");
-          
-        tableModel.addColumn("name");
-        tableModel.addColumn("id");   
+        tableModel.addColumn("price");
+        tableModel.addColumn("des");
+
         table.setModel(tableModel);
         SetModelTable(handle.GetAllWLine());
 
@@ -50,7 +52,7 @@ DefaultTableModel tableModel;
     public void SetModelTable(List<WLine> PrDatas) {
         for (WLine PrData : PrDatas) {
             tableModel.addRow(new Object[]{
-                PrData.gettitle(),  PrData.getname(),PrData.getid(),PrData.getprice(),PrData.getdes()});
+                PrData.getid(), PrData.getIdUser(), PrData.gettitle(), PrData.getprice(), PrData.getdes()});
         }
     }
 
@@ -208,7 +210,7 @@ DefaultTableModel tableModel;
         SetModelTable(handle.GetAllWLine());        // TODO add your handling code here:
     }//GEN-LAST:event_refeshActionPerformed
 
-    
+
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
@@ -217,11 +219,11 @@ DefaultTableModel tableModel;
         int row = table.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(rootPane, "Select the row you want to delete!",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             int confirmDelete = JOptionPane.showConfirmDialog(rootPane, "Are You sure?");
             if (confirmDelete == JOptionPane.YES_OPTION) {
-                String PrDataID = String.valueOf(table.getValueAt(row, 0));
+                int PrDataID = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
                 handle.DeleteWLine(PrDataID);
 
                 tableModel.setRowCount(0);
@@ -231,7 +233,12 @@ DefaultTableModel tableModel;
     }//GEN-LAST:event_delActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int row = table.getSelectedRow();
+        int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
+        WLine p = Handling.GetWLine(id);
+        System.out.println(p.gettitle());
+        handle.AddNewProductData(p);
+        handle.DeleteWLine(id);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

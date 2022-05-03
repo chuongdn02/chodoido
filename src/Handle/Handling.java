@@ -42,6 +42,31 @@ public class Handling {
         return PrData;
     }
 
+    public static WLine GetWLine(int id) {
+        WLine PrD = new WLine();
+        Connection conn = connection.getJDBCConnection();
+
+        try {
+            
+            PreparedStatement ps = conn.prepareStatement("select * from WLine where idWLine = " + id);
+            //ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            
+            while (result.next()) {
+
+                PrD.setIdUser(result.getInt("id"));
+                PrD.setname(result.getString("name"));
+                PrD.setprice(result.getString("price"));
+                PrD.setdes(result.getString("des"));
+                PrD.settitle(result.getString("title"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return PrD;
+    }
+
     public List<WLine> GetAllWLine() {
         List<WLine> PrWData = new ArrayList<WLine>();
         Connection conn = connection.getJDBCConnection();
@@ -53,7 +78,8 @@ public class Handling {
             while (result.next()) {
                 WLine PrD1 = new WLine();
 
-                PrD1.setid(result.getString("id"));
+                PrD1.setid(result.getInt("idWLine"));
+                PrD1.setIdUser(result.getInt("id"));
                 PrD1.setname(result.getString("name"));
                 PrD1.setprice(result.getString("price"));
                 PrD1.setdes(result.getString("des"));
@@ -126,7 +152,7 @@ public class Handling {
                     admin adacc = new admin();
                     System.out.println(id);
                     adacc.setid(result.getString("id"));
-                    adacc.setpass(result.getString("password"));
+                    adacc.setpass(result.getString("pass"));
 
                     return adacc;
                 }
@@ -176,11 +202,28 @@ public class Handling {
         }
     }
 
-    public void AddNewProductData(product PrD) {
+    public void AddNewProductData(WLine PrD) {
         Connection conn = connection.getJDBCConnection();
 
         try {
             PreparedStatement ps = conn.prepareStatement("insert into product(id,name,price,title,des) value (?,?,?,?,?)");
+            ps.setInt(1, PrD.getIdUser());
+            ps.setString(2, PrD.getname());
+            ps.setString(3, PrD.getprice());
+            ps.setString(4, PrD.gettitle());
+            ps.setString(5, PrD.getdes());
+
+            int result = ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void AddNewProductWLine(product PrD) {
+        Connection conn = connection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("insert into WLine(id,name,price,title,des) value (?,?,?,?,?)");
             ps.setInt(1, PrD.getid());
             ps.setString(2, PrD.getname());
             ps.setString(3, PrD.getprice());
@@ -193,12 +236,12 @@ public class Handling {
         }
     }
 
-    public void DeleteWLine(String id) {
+    public void DeleteWLine(int id) {
         Connection conn = connection.getJDBCConnection();
 
         try {
             PreparedStatement ps = conn.prepareStatement("delete from WLine where id = ?");
-            ps.setString(1, id);
+            ps.setInt(1, id);
 
             int result = ps.executeUpdate();
         } catch (SQLException ex) {
@@ -317,6 +360,7 @@ public class Handling {
         }
         return id;
     }
+
     public static void RemoveID(int id) {
         Connection conn = connection.getJDBCConnection();
         try {
@@ -328,6 +372,7 @@ public class Handling {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static void SelectPhone(String phone) {
         Connection conn = connection.getJDBCConnection();
         try {
@@ -341,6 +386,7 @@ public class Handling {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static String getPhone() {
         Connection conn = connection.getJDBCConnection();
         String phone = null;
@@ -356,7 +402,7 @@ public class Handling {
         }
         return phone;
     }
-    
+
     public static int getIDPhone() {
         Connection conn = connection.getJDBCConnection();
         int id = 0;
@@ -373,18 +419,21 @@ public class Handling {
         }
         return id;
     }
+
     public static void RemovePhone() {
         Connection conn = connection.getJDBCConnection();
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID");
-            
+
             int result = preparedStatement.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public static void main(String[] args) {
-        SelectID(2);
+        WLine p = GetWLine(2);
+        System.out.println(p.getIdUser());
     }
 }

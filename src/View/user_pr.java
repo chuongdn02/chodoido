@@ -370,21 +370,13 @@ public class user_pr extends javax.swing.JFrame {
             return;
         }
 
-//        List<product> PrDatas = handle.GetAllproduct();
-//        for (product PrData : PrDatas) {
-//            if (Integer.valueOf(id.getText()).equals(PrData.getid())) {
-//                JOptionPane.showMessageDialog(rootPane, "ID already exists!",
-//                        "Error", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//        }
         product PrData = new product();
         PrData.setid(Handling.getIDPhone());
         PrData.setname(name.getText());
         PrData.setprice(price.getText());
         PrData.settitle(title.getText());
         PrData.setdes(des.getText());
-        handle.AddNewProductData(PrData);
+        handle.AddNewProductWLine(PrData);
         JOptionPane.showMessageDialog(rootPane, "Success!");
         //id.setText("");
         name.setText("");

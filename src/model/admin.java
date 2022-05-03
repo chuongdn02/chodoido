@@ -9,9 +9,12 @@ package model;
  * @author macpro
  */
 public class admin {
-String id,pass;
+
+    private String id, pass;
+
     public admin() {
     }
+
     public admin(String id, String pass) {
         this.id = id;
         this.pass = pass;
