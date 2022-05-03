@@ -1,5 +1,5 @@
 CREATE TABLE admin(
-	id INT NOT NULL AUTO_INCREMENT,
+	id VARCHAR(11),
     pass VARCHAR(45) NULL,
     PRIMARY KEY (id)
 );
@@ -35,3 +35,8 @@ CREATE TABLE product (
 	  PRIMARY KEY (idProduct),
 	  foreign key (id) references user(id)
   );
+  
+CREATE TABLE SelectID(
+	id int,
+    phoneNumber VARCHAR(11)
+) 
