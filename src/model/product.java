@@ -9,9 +9,9 @@ package model;
  * @author macpro
  */
 public class product {
+
     private int id;
-   private String name, des,price,title;
-    
+    private String name, des, price, title;
 
     public product() {
     }

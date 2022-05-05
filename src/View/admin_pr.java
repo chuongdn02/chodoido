@@ -17,7 +17,8 @@ import model.product;
  * @author macpro
  */
 public class admin_pr extends javax.swing.JFrame {
-DefaultTableModel tableModel;
+
+    DefaultTableModel tableModel;
     Handling handle;
 
     /**
@@ -27,7 +28,7 @@ DefaultTableModel tableModel;
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
-         Color mycolor = new Color(229, 255, 251);
+        Color mycolor = new Color(229, 255, 251);
         this.getContentPane().setBackground(mycolor);
 
         tableModel = new DefaultTableModel() {
@@ -37,11 +38,12 @@ DefaultTableModel tableModel;
             }
 
         };
-
+        tableModel.addColumn("id");
+        tableModel.addColumn("idUser");
         tableModel.addColumn("title");
-          
-        tableModel.addColumn("name");
-        tableModel.addColumn("id");   
+        tableModel.addColumn("price");
+        tableModel.addColumn("des");
+
         table.setModel(tableModel);
         SetModelTable(handle.GetAllWLine());
 
@@ -50,7 +52,7 @@ DefaultTableModel tableModel;
     public void SetModelTable(List<WLine> PrDatas) {
         for (WLine PrData : PrDatas) {
             tableModel.addRow(new Object[]{
-                PrData.gettitle(),  PrData.getname(),PrData.getid(),PrData.getprice(),PrData.getdes()});
+                PrData.getid(), PrData.getIdUser(), PrData.gettitle(), PrData.getprice(), PrData.getdes()});
         }
     }
 
@@ -65,12 +67,13 @@ DefaultTableModel tableModel;
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         refesh = new javax.swing.JButton();
         del = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        conf = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,6 +86,10 @@ DefaultTableModel tableModel;
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CHO DOI DO");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("ADMIN");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -90,13 +97,17 @@ DefaultTableModel tableModel;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                .addGap(187, 187, 187))
+                .addGap(106, 106, 106)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -130,10 +141,10 @@ DefaultTableModel tableModel;
             }
         });
 
-        jButton1.setText("confirm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        conf.setText("confirm");
+        conf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                confActionPerformed(evt);
             }
         });
 
@@ -143,14 +154,14 @@ DefaultTableModel tableModel;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(refesh, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(del))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(conf)
+                        .addGap(144, 144, 144)
+                        .addComponent(del)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,7 +173,7 @@ DefaultTableModel tableModel;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refesh)
                     .addComponent(del)
-                    .addComponent(jButton1))
+                    .addComponent(conf))
                 .addContainerGap())
         );
 
@@ -208,7 +219,7 @@ DefaultTableModel tableModel;
         SetModelTable(handle.GetAllWLine());        // TODO add your handling code here:
     }//GEN-LAST:event_refeshActionPerformed
 
-    
+
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
@@ -217,22 +228,29 @@ DefaultTableModel tableModel;
         int row = table.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(rootPane, "Select the row you want to delete!",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             int confirmDelete = JOptionPane.showConfirmDialog(rootPane, "Are You sure?");
             if (confirmDelete == JOptionPane.YES_OPTION) {
-                String PrDataID = String.valueOf(table.getValueAt(row, 0));
+                int PrDataID = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
                 handle.DeleteWLine(PrDataID);
-
-                tableModel.setRowCount(0);
-                SetModelTable(handle.GetAllWLine());
             }
         }// TODO add your handling code here:
     }//GEN-LAST:event_delActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void confActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confActionPerformed
+        int row = table.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Select the row you want to delete!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+        int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
+        WLine p = Handling.GetWLine(id);
+        handle.AddNewProductData(p); 
+        handle.DeleteWLine(id);
+        JOptionPane.showMessageDialog(rootPane, "Success!");
+        }
+    }//GEN-LAST:event_confActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,9 +289,10 @@ DefaultTableModel tableModel;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel;
+    private javax.swing.JButton conf;
     private javax.swing.JButton del;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

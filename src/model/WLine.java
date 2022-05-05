@@ -9,26 +9,39 @@ package model;
  * @author macpro
  */
 public class WLine {
-    
-String id, name, des,price,title;
-    
+
+    private int id,idUser;
+    private String name, des, price, title;
 
     public WLine() {
     }
 
-    public WLine(String id, String name, String price, String des, String title) {
+    public WLine(int id, int idUser, String name, String des, String price, String title) {
         this.id = id;
+        this.idUser = idUser;
         this.name = name;
         this.des = des;
         this.price = price;
         this.title = title;
     }
+    
+    
 
-    public String getid() {
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    
+
+    public int getid() {
         return id;
     }
 
-    public void setid(String id) {
+    public void setid(int id) {
         this.id = id;
     }
 
@@ -64,4 +77,3 @@ String id, name, des,price,title;
         this.title = title;
     }
 }
-

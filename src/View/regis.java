@@ -226,9 +226,9 @@ public class regis extends javax.swing.JFrame {
     }//GEN-LAST:event_cfpassActionPerformed
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
-if (phone.getText().equals("")
-                ||name.getText().equals("")
-                ||addr.getText().equals("")
+        if (phone.getText().equals("")
+                || name.getText().equals("")
+                || addr.getText().equals("")
                 || String.valueOf(pass.getPassword()).equals("")
                 || String.valueOf(cfpass.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please enter all fields",
@@ -248,20 +248,22 @@ if (phone.getText().equals("")
                     JOptionPane.showMessageDialog(rootPane, "Account name already exists!",
                             "ERROR", JOptionPane.ERROR_MESSAGE);
                     return;
+                } else {
+                    String gender = "";
+                    if (male.isSelected()) {
+                        gender += "nam";
+                    }
+                    if (female.isSelected()) {
+                        gender += "nu";
+                    }
+                    user account = new user(phone.getText(), String.valueOf(pass.getPassword()), name.getText(), addr.getText(), gender);
+                    handle.SignupAccount(account);
+                    JOptionPane.showMessageDialog(rootPane, "Success!\n Go to Login");
+                    
+                    new login().setVisible(true);
+                    this.dispose();
+                    return;
                 }
-            String gender= "";
-            if(male.isSelected()){
-                gender+="nam";
-            }
-            if(female.isSelected()){
-                gender+="nu";
-            }
-            user account = new user(phone.getText(),String.valueOf(pass.getPassword()),name.getText(),addr.getText(),gender);
-            handle.SignupAccount(account);
-            JOptionPane.showMessageDialog(rootPane, "Success!\n Go to Login");
-            new login().setVisible(true);
-            this.dispose();
-            
             }
         }     // TODO add your handling code here:
     }//GEN-LAST:event_signupActionPerformed
