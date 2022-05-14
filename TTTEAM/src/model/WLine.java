@@ -10,8 +10,7 @@ package model;
  */
 public class WLine {
 
-    private int id;
-    private int idUser;
+    private int id,idUser;
     private String name, des, price, title;
 
     public WLine() {
@@ -25,6 +24,8 @@ public class WLine {
         this.price = price;
         this.title = title;
     }
+    
+    
 
     public int getIdUser() {
         return idUser;
@@ -33,6 +34,8 @@ public class WLine {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
+    
 
     public int getid() {
         return id;
