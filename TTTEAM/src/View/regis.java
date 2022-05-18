@@ -92,6 +92,7 @@ public class regis extends javax.swing.JFrame {
 
         signup.setBackground(new java.awt.Color(15, 82, 186));
         signup.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        signup.setForeground(new java.awt.Color(255, 255, 255));
         signup.setText("SIGN UP");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
