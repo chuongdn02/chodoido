@@ -4,24 +4,24 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.user;
+import model_114.user;
 
 /**
  *
  * @author macpro
  */
-public class regis extends javax.swing.JFrame {
+public class regis_130 extends javax.swing.JFrame {
 
     Handling handle;
 
     /**
      * Creates new form Sigup
      */
-    public regis() {
+    public regis_130() {
         handle = new Handling();
 
         initComponents();
@@ -305,7 +305,7 @@ public class regis extends javax.swing.JFrame {
                     handle.SignupAccount(account);
                     JOptionPane.showMessageDialog(rootPane, "Success!\n Go to Login");
 
-                    new login().setVisible(true);
+                    new login_147().setVisible(true);
                     this.dispose();
                     return;
                 }
@@ -324,7 +324,7 @@ public class regis extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        new login().setVisible(true);
+        new login_147().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -345,20 +345,20 @@ public class regis extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(regis_130.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(regis_130.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(regis_130.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(regis_130.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new regis().setVisible(true);
+                new regis_130().setVisible(true);
             }
         });
     }

@@ -4,19 +4,19 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.WLine;
-import model.product;
+import model_114.WLine;
+import model_114.product;
 
 /**
  *
  * @author macpro
  */
-public class admin_pr extends javax.swing.JFrame {
+public class admin_pr_114 extends javax.swing.JFrame {
 
     DefaultTableModel tableModel;
     Handling handle;
@@ -24,7 +24,7 @@ public class admin_pr extends javax.swing.JFrame {
     /**
      * Creates new form MainForm
      */
-    public admin_pr() {
+    public admin_pr_114() {
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
@@ -239,20 +239,20 @@ public class admin_pr extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(admin_pr_114.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(admin_pr_114.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(admin_pr_114.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admin_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(admin_pr_114.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new admin_pr().setVisible(true);
+                new admin_pr_114().setVisible(true);
             }
         });
     }

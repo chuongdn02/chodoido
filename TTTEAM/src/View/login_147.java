@@ -4,24 +4,24 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import model.admin;
-import model.user;
+import model_114.admin;
+import model_114.user;
 
 /**
  *
  * @author macpro
  */
-public class login extends javax.swing.JFrame {
+public class login_147 extends javax.swing.JFrame {
 
     Handling handle;
 
     /**
      * Creates new form Sigin
      */
-    public login() {
+    public login_147() {
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
@@ -259,7 +259,7 @@ public class login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
                 return;
             } else {
-                new user_pr().setVisible(true);
+                new user_pr_350().setVisible(true);
                 this.dispose();
             }
         }
@@ -268,7 +268,7 @@ public class login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
                 return;
             } else {
-                new admin_pr().setVisible(true);
+                new admin_pr_114().setVisible(true);
                 this.dispose();
             }
         }
@@ -290,13 +290,13 @@ public class login extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-        new regis().setVisible(true);
+        new regis_130().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-        new home().setVisible(true);
+        new home_333().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
 
@@ -317,20 +317,20 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(login_147.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(login_147.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(login_147.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(login_147.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new login_147().setVisible(true);
             }
         });
     }

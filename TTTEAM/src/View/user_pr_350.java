@@ -4,18 +4,18 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.product;
+import model_114.product;
 
 /**
  *
  * @author macpro
  */
-public class user_pr extends javax.swing.JFrame {
+public class user_pr_350 extends javax.swing.JFrame {
 
     DefaultTableModel tableModel; 
     
@@ -24,7 +24,7 @@ public class user_pr extends javax.swing.JFrame {
     /**
      * Creates new form MainForm
      */
-    public user_pr() {
+    public user_pr_350() {
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
@@ -388,7 +388,7 @@ public class user_pr extends javax.swing.JFrame {
         int row = table.getSelectedRow();
         int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
         Handling.SelectID(id);
-        new detail().setVisible(true);
+        new detail_350().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -417,20 +417,20 @@ public class user_pr extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(user_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user_pr_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(user_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user_pr_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(user_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user_pr_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(user_pr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(user_pr_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new user_pr().setVisible(true);
+                new user_pr_350().setVisible(true);
             }
         });
     }

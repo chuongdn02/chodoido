@@ -4,22 +4,22 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
-import model.Detail;
-import model.product;
+import model_114.Detail;
+import model_114.product;
 
 /**
  *
  * @author macpro
  */
-public class detail extends javax.swing.JFrame {
+public class detail_350 extends javax.swing.JFrame {
  Handling handle;
 
     /**
      * Creates new form MainForm
      */
-    public detail() {
+    public detail_350() {
         
         setLocationRelativeTo(null);
         Color mycolor = new Color(255, 255, 255);
@@ -172,7 +172,7 @@ public class detail extends javax.swing.JFrame {
 
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
         Handling.RemoveID(Handling.getID());
-        new user_pr().setVisible(true);
+        new user_pr_350().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_doneActionPerformed
 
@@ -193,20 +193,20 @@ public class detail extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detail_350.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new detail().setVisible(true);
+                new detail_350().setVisible(true);
             }
         });
     }

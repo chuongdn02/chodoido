@@ -2,15 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Handle;
+package Handling_350_114;
 
-import connect.connection;
+import model_114.Detail;
+import model_114.WLine;
+import model_114.product;
+import model_114.user;
+import model_114.admin;
+import connect_333.connection;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.*;
 
 /**
  *

@@ -2,26 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package model_114;
 
 /**
  *
  * @author macpro
  */
-public class product {
+public class WLine {
 
     private int id;
+    private int idUser;
     private String name, des, price, title;
 
-    public product() {
+    public WLine() {
     }
 
-    public product(int id, String name, String price, String des, String title) {
+    public WLine(int id, int idUser, String name, String des, String price, String title) {
         this.id = id;
+        this.idUser = idUser;
         this.name = name;
         this.des = des;
         this.price = price;
         this.title = title;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public int getid() {
@@ -36,7 +46,7 @@ public class product {
         return name;
     }
 
-    public void setname(String name) {
+    public void setname(String tenSP) {
         this.name = name;
     }
 

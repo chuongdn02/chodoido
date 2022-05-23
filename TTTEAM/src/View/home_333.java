@@ -4,17 +4,17 @@
  */
 package View;
 
-import Handle.Handling;
+import Handling_350_114.Handling;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.product;
+import model_114.product;
 
 /**
  *
  * @author macpro
  */
-public class home extends javax.swing.JFrame {
+public class home_333 extends javax.swing.JFrame {
 
     DefaultTableModel tableModel;
     Handling handle;
@@ -22,7 +22,7 @@ public class home extends javax.swing.JFrame {
     /**
      * Creates new form MainForm
      */
-    public home() {
+    public home_333() {
         handle = new Handling();
         initComponents();
         setLocationRelativeTo(null);
@@ -237,7 +237,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_refeshActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        new login().setVisible(true);
+        new login_147().setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
 
@@ -274,20 +274,20 @@ public class home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home_333.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home_333.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home_333.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home_333.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new home().setVisible(true);
+                new home_333().setVisible(true);
             }
         });
     }
