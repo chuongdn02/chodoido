@@ -6,6 +6,8 @@ package View;
 
 import Handling_350_114.Handling;
 import java.awt.Color;
+import java.awt.Desktop;
+import java.net.URL;
 import javax.swing.JOptionPane;
 import model_114.admin;
 import model_114.user;
@@ -47,7 +49,6 @@ public class login_147 extends javax.swing.JFrame {
         pass = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -87,6 +88,11 @@ public class login_147 extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Forgot password?");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         pass.setText("Password");
         pass.setBorder(null);
@@ -96,15 +102,6 @@ public class login_147 extends javax.swing.JFrame {
 
         jSeparator2.setBackground(new java.awt.Color(15, 82, 186));
         jSeparator2.setForeground(new java.awt.Color(15, 82, 186));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("X");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Don't have an account?");
@@ -151,9 +148,6 @@ public class login_147 extends javax.swing.JFrame {
                                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(pass))))
                         .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -161,8 +155,7 @@ public class login_147 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -184,7 +177,7 @@ public class login_147 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(15, 82, 186));
@@ -239,7 +232,7 @@ public class login_147 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -247,46 +240,29 @@ public class login_147 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        if (phone.getText().equals("") || String.valueOf(pass.getPassword()).equals("")) {
+        if(phone.getText().equals("") || String.valueOf(pass.getPassword()).equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Please enter all fields", "WARNING", JOptionPane.WARNING_MESSAGE);
             return;
         }
         user loginS = handle.SigninUSER(phone.getText());
-        admin login = handle.Signinadmin(phone.getText());
-        Handling.SelectPhone(phone.getText());
-        if (loginS != null) {
-            if (!loginS.getpass().equals(String.valueOf(pass.getPassword()))) {
+        if(loginS == null) {
+            JOptionPane.showMessageDialog(rootPane, "UserData doesn't exist!");
+            return;
+        } else {
+
+            if(!loginS.getpass().equals(String.valueOf(pass.getPassword()))) {
                 JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
                 return;
             } else {
                 new user_pr_350().setVisible(true);
                 this.dispose();
             }
-        }
-        if (login != null) {
-            if (!login.getpass().equals(String.valueOf(pass.getPassword()))) {
-                JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
-                return;
-            } else {
-                new admin_pr_114().setVisible(true);
-                this.dispose();
-            }
-        }
-        if (loginS == null && login == null) {
-            JOptionPane.showMessageDialog(rootPane, "This account doesn't exist");
-            return;
-
-        }        // TODO add your handling code here:
+        } // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
 
     private void phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_phoneActionPerformed
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
@@ -299,6 +275,15 @@ public class login_147 extends javax.swing.JFrame {
         new home_333().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        try{
+            Desktop.getDesktop().browse(new URL("https://sso-edu.viettel.vn/?page=Member.forgotPassword").toURI());
+        }
+        catch(Exception e)
+        {}
+// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,7 +325,6 @@ public class login_147 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
