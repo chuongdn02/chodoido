@@ -46,7 +46,7 @@ public class WLine {
         return name;
     }
 
-    public void setname(String tenSP) {
+    public void setname(String name) {
         this.name = name;
     }
 

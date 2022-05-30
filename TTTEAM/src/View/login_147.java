@@ -254,7 +254,8 @@ public class login_147 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Passord incorrect!!");
                 return;
             } else {
-                new user_pr_350().setVisible(true);
+                Handling.SelectPhone(phone.getText());
+                new user_pr_350().setVisible(true);  
                 this.dispose();
             }
         } // TODO add your handling code here:

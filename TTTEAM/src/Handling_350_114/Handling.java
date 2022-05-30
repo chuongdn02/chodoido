@@ -222,17 +222,17 @@ public class Handling {
         }
     }
 
- public void AddNewProductWLine(product PrD) {
+ public static void AddNewProductWLine(WLine PrD) {
         Connection conn = connection.getJDBCConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("insert into WLine(id,name,price,title,des) value (?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into WLine(id,name,price,title,des) value(?,?,?,?,?)");
             ps.setInt(1, PrD.getIdUser());
             ps.setString(2, PrD.getname());
             ps.setString(3, PrD.getprice());
             ps.setString(4, PrD.gettitle());
             ps.setString(5, PrD.getdes());
 
-            int result = ps.executeUpdate();
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -437,7 +437,13 @@ public class Handling {
     }
 
     public static void main(String[] args) {
-        WLine p = GetWLine(2);
-        System.out.println(p.getIdUser());
+        WLine a = new WLine();
+        a.setIdUser(2);
+        a.setdes("sdfs");
+        a.setname("trung");
+        a.setprice("fsdfs");
+        a.settitle("sdfs");
+        AddNewProductWLine(a);
+        
     }
 }
