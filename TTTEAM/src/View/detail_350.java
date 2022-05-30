@@ -21,11 +21,10 @@ public class detail_350 extends javax.swing.JFrame {
      */
     public detail_350() {
         
-        setLocationRelativeTo(null);
+        setLocation(400,300);
         Color mycolor = new Color(255,153,0);
         this.getContentPane().setBackground(mycolor);
-        initComponents();
-        
+        initComponents();       
         Detail getInfo = new Detail();
         int id = Handling.getID();
         getInfo = Handling.getInfo(id);
@@ -114,7 +113,7 @@ public class detail_350 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +130,7 @@ public class detail_350 extends javax.swing.JFrame {
                             .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(address, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                        .addGap(0, 186, Short.MAX_VALUE)))
+                        .addGap(0, 192, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(257, 257, 257)
@@ -141,7 +140,7 @@ public class detail_350 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

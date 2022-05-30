@@ -10,6 +10,7 @@ import java.awt.Desktop;
 import java.net.URL;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model_114.product;
 
@@ -28,7 +29,7 @@ public class home_333 extends javax.swing.JFrame {
     public home_333() {
         handle = new Handling();
         initComponents();
-        setLocationRelativeTo(null);
+        setLocation(400, 300);
         Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
 
@@ -43,9 +44,13 @@ public class home_333 extends javax.swing.JFrame {
         tableModel.addColumn("title");
         tableModel.addColumn("name");
         tableModel.addColumn("price");
-
+        
         table.setModel(tableModel);
         SetModelTable(handle.GetAllproduct());
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table.getColumnModel().getColumn(0).setPreferredWidth(300);
+        table.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table.getColumnModel().getColumn(2).setPreferredWidth(100);
 
     }
 
@@ -76,6 +81,7 @@ public class home_333 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 255, 102));
@@ -101,7 +107,7 @@ public class home_333 extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 0));
         jLabel2.setFont(new java.awt.Font("Kannada MN", 3, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 255, 255));
         jLabel2.setText("findEVERYTHING");
 
         home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_home_30px.png"))); // NOI18N
@@ -180,6 +186,13 @@ public class home_333 extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-xbox-x-30.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,20 +203,25 @@ public class home_333 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(30, 30, 30)
-                                .addComponent(home))
-                            .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(25, 25, 25)
+                                .addComponent(home)
+                                .addGap(18, 18, 18)
+                                .addComponent(help)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(login))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(login)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -214,7 +232,8 @@ public class home_333 extends javax.swing.JFrame {
                         .addComponent(home)
                         .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchTF)
@@ -280,6 +299,10 @@ public class home_333 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tableMouseClicked
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -322,6 +345,7 @@ public class home_333 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton login;

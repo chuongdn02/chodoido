@@ -16,7 +16,7 @@ public class connection {
     public static Connection getJDBCConnection(){
         final String url = "jdbc:mysql://localhost:3306/chodoido";
         final String user = "root";
-        final String password = "huynhtrung02";
+        final String password = "conga123";
         
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

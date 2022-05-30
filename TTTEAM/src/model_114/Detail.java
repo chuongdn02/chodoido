@@ -15,6 +15,7 @@ public class Detail {
     private String name;
     private String phone;
     private String addr;
+    private String sex;
 
     public Detail() {
     }
@@ -66,7 +67,13 @@ public class Detail {
     public void setAddr(String addr) {
         this.addr = addr;
     }
+    public String getsex() {
+        return sex;
+    }
 
+    public void setsex(String sex) {
+        this.sex = sex;
+    }
     
     
 }

@@ -26,7 +26,7 @@ public class login_ad_114 extends javax.swing.JFrame {
     public login_ad_114() {
         handle = new Handling();
         initComponents();
-        setLocationRelativeTo(null);
+        setLocation(400,300);
         Color mycolor = new Color(229, 255, 251);
         this.getContentPane().setBackground(mycolor);
     }
@@ -70,7 +70,6 @@ public class login_ad_114 extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_password_30px.png"))); // NOI18N
 
-        phone.setText("Username or phone");
         phone.setBorder(null);
         phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

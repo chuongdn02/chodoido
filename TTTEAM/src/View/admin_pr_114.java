@@ -8,6 +8,7 @@ import Handling_350_114.Handling;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model_114.WLine;
 import model_114.product;
@@ -27,7 +28,7 @@ public class admin_pr_114 extends javax.swing.JFrame {
     public admin_pr_114() {
         handle = new Handling();
         initComponents();
-        setLocationRelativeTo(null);
+        setLocation(400, 300);
         Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
 
@@ -39,18 +40,24 @@ public class admin_pr_114 extends javax.swing.JFrame {
 
         };
         tableModel.addColumn("id");
-        tableModel.addColumn("title");
-        tableModel.addColumn("price");
 
+        tableModel.addColumn("title");
+        tableModel.addColumn("name");
+        tableModel.addColumn("price");
         table.setModel(tableModel);
         SetModelTable(handle.GetAllproduct());
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table.getColumnModel().getColumn(0).setPreferredWidth(0);
+        table.getColumnModel().getColumn(1).setPreferredWidth(300);
+        table.getColumnModel().getColumn(2).setPreferredWidth(200);
+        table.getColumnModel().getColumn(3).setPreferredWidth(100);
 
     }
 
     public void SetModelTable(List<product> PrDatas) {
         for (product PrData : PrDatas) {
             tableModel.addRow(new Object[]{
-                PrData.getid(), PrData.gettitle(), PrData.getprice()});
+                PrData.getid(), PrData.gettitle(), PrData.getname(), PrData.getprice()});
         }
     }
 
@@ -74,7 +81,8 @@ public class admin_pr_114 extends javax.swing.JFrame {
         searchTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        delete = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 102));
@@ -98,7 +106,7 @@ public class admin_pr_114 extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 0));
         jLabel2.setFont(new java.awt.Font("Kannada MN", 3, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 255, 255));
         jLabel2.setText("findEVERYTHING");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_home_30px.png"))); // NOI18N
@@ -124,16 +132,24 @@ public class admin_pr_114 extends javax.swing.JFrame {
         table.setBackground(new java.awt.Color(255, 153, 0));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "id", "name", "price"
+                "id", "title", "name", "price"
             }
         ));
         jScrollPane1.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setMinWidth(0);
+            table.getColumnModel().getColumn(0).setPreferredWidth(0);
+            table.getColumnModel().getColumn(0).setMaxWidth(0);
+            table.getColumnModel().getColumn(1).setPreferredWidth(300);
+            table.getColumnModel().getColumn(2).setPreferredWidth(200);
+            table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        }
 
         searchcb.setBackground(new java.awt.Color(51, 51, 255));
         searchcb.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,11 +175,18 @@ public class admin_pr_114 extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Bản sao icons8-remove-30.png"))); // NOI18N
-        jLabel6.setText("REMOVE");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Bản sao icons8-remove-30.png"))); // NOI18N
+        delete.setText("REMOVE");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                deleteMouseClicked(evt);
+            }
+        });
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-xbox-x-30.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
             }
         });
 
@@ -172,7 +195,7 @@ public class admin_pr_114 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 5, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,14 +206,16 @@ public class admin_pr_114 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel10)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -200,10 +225,11 @@ public class admin_pr_114 extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,7 +272,7 @@ public class admin_pr_114 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-          List<product> resultSearch = handle.GetResultSearch( searchTF.getText());
+        List<product> resultSearch = handle.GetResultSearch(searchTF.getText());
         tableModel.setRowCount(0);
         if (!resultSearch.isEmpty()) {
             SetModelTable(resultSearch);
@@ -255,8 +281,8 @@ public class admin_pr_114 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-       int row = table.getSelectedRow();
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        int row = table.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(rootPane, "Select the row you want to delete!",
                     "Error", JOptionPane.ERROR_MESSAGE);
@@ -270,7 +296,11 @@ public class admin_pr_114 extends javax.swing.JFrame {
             }
 
         } // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel6MouseClicked
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -308,13 +338,14 @@ public class admin_pr_114 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField searchTF;

@@ -27,7 +27,7 @@ public class ARV114 extends javax.swing.JFrame {
 
          handle = new Handling();
         initComponents();
-        setLocationRelativeTo(null);
+        setLocation(400,300);
         Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
         
@@ -80,7 +80,7 @@ public class ARV114 extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 0));
         jLabel2.setFont(new java.awt.Font("Kannada MN", 3, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 255, 255));
         jLabel2.setText("findEVERYTHING");
 
         table.setBackground(new java.awt.Color(255, 153, 0));
@@ -115,7 +115,7 @@ public class ARV114 extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("X");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-xbox-x-30.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -145,9 +145,7 @@ public class ARV114 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -157,12 +155,6 @@ public class ARV114 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        // TODO add your handling code here:
-        new admin_pr_114().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel7MouseClicked
 
     private void rmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rmMouseClicked
         int row = table.getSelectedRow();
@@ -193,6 +185,12 @@ public class ARV114 extends javax.swing.JFrame {
         SetModelTable(handle.GetAllWLine());
         }
     }//GEN-LAST:event_addMouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        new admin_pr_114().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

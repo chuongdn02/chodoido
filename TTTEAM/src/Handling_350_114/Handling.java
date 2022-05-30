@@ -46,6 +46,7 @@ public class Handling {
         return PrData;
     }
 
+
     public static WLine GetWLine(int id) {
         WLine PrD = new WLine();
         Connection conn = connection.getJDBCConnection();
@@ -264,30 +265,6 @@ public class Handling {
         }
     }
 
-    public void ShowtData(product PrD) {
-        Connection conn = connection.getJDBCConnection();
-
-        try {
-            PreparedStatement ps = conn.prepareStatement("select * from product, user");
-            ResultSet result = ps.executeQuery();
-            product PrD3 = new product();
-            user u = new user();
-
-            PrD3.setid(result.getInt("id"));
-            PrD3.setname(result.getString("name"));
-            PrD3.setprice(result.getString("price"));
-            PrD3.setdes(result.getString("des"));
-            PrD3.settitle(result.getString("title"));
-            u.setname(result.getString("name"));
-            u.setphone(result.getString("phone"));
-            u.setsex(result.getString("sex"));
-            u.setadd(result.getString("adr"));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public List<product> GetResultSearch(String valueSearch) {
         List<product> PrData = new ArrayList<>();
         Connection conn = connection.getJDBCConnection();
@@ -319,7 +296,7 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
         try {
             //String sql = "select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = 1";
-            PreparedStatement preparedStatement = conn.prepareStatement("select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = " + id);
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from user join product on user.id = product.id where product.idProduct = " + id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 de.setTitle(resultSet.getString("title"));
@@ -328,6 +305,26 @@ public class Handling {
                 de.setName(resultSet.getString("user.name"));
                 de.setPhone(resultSet.getString("phone"));
                 de.setAddr(resultSet.getString("adr"));
+                de.setsex(resultSet.getString("sex"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return de;
+    }
+        public static Detail getInfouser(int id) {
+        Detail de = new Detail();
+        Connection conn = connection.getJDBCConnection();
+        try {
+            //String sql = "select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = 1";
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from user where id = " + id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                de.setName(resultSet.getString("name"));
+                de.setPhone(resultSet.getString("phone"));
+                de.setAddr(resultSet.getString("adr"));
+                de.setsex(resultSet.getString("sex"));
             }
 
         } catch (SQLException ex) {
