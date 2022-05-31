@@ -97,6 +97,7 @@ public class home_333 extends javax.swing.JFrame {
             }
         });
 
+        help.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-help-30.png"))); // NOI18N
         help.setText("HELP");
         help.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +111,7 @@ public class home_333 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 255, 255));
         jLabel2.setText("findEVERYTHING");
 
+        home.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_home_30px.png"))); // NOI18N
         home.setText("HOME");
         home.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -127,6 +129,7 @@ public class home_333 extends javax.swing.JFrame {
             }
         });
 
+        admin.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         admin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-face-30.png"))); // NOI18N
         admin.setText("ADMIN");
         admin.addMouseListener(new java.awt.event.MouseAdapter() {
