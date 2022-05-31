@@ -4,18 +4,87 @@
  */
 package View;
 
+import Handling_350_114.Handling;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model_114.product;
+
 /**
  *
  * @author laptoptt
  */
 public class PM_350 extends javax.swing.JFrame {
 
+    DefaultTableModel tableModel, tableModel2;
+    Handling handle;
+
     /**
      * Creates new form PM_350
      */
     public PM_350() {
+        handle = new Handling();
         initComponents();
-        setLocation(400,300);
+        setLocation(400, 300);
+        Color mycolor = new Color(255, 153, 0);
+        this.getContentPane().setBackground(mycolor);
+        int id = Handling.getIDPhone();
+        Handling.SelectID(id);
+        int ad = Handling.getID();
+        tableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // khong cho phep nguoi dung Edit du lieu trong bang
+            }
+
+        };
+
+        tableModel.addColumn("title");
+        tableModel.addColumn("name");
+        tableModel.addColumn("price");
+        table1.setModel(tableModel);
+        SetModelTable(handle.GetAllproductPM(ad));
+        table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table1.getColumnModel().getColumn(0).setPreferredWidth(300);
+        table1.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        //
+
+        tableModel2 = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // khong cho phep nguoi dung Edit du lieu trong bang
+            }
+
+        };
+
+        tableModel2.addColumn("title");
+        tableModel2.addColumn("name");
+        tableModel2.addColumn("price");
+        table2.setModel(tableModel2);
+        SetModelTable2(handle.GetAllproductPM2(ad));
+        table2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table2.getColumnModel().getColumn(0).setPreferredWidth(300);
+        table2.getColumnModel().getColumn(1).setPreferredWidth(200);
+        table2.getColumnModel().getColumn(2).setPreferredWidth(100);
+
+    }
+
+    public void SetModelTable(List<product> PrDatas) {
+        for (product PrData : PrDatas) {
+            tableModel.addRow(new Object[]{
+                PrData.gettitle(), PrData.getname(), PrData.getprice()});
+        }
+
+    }
+
+    public void SetModelTable2(List<product> PrDatas) {
+        for (product PrData : PrDatas) {
+            tableModel2.addRow(new Object[]{
+                PrData.gettitle(), PrData.getname(), PrData.getprice()});
+        }
+
     }
 
     /**
@@ -27,21 +96,99 @@ public class PM_350 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table2 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        table1.setBackground(new java.awt.Color(255, 153, 0));
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "id", "title", "name", "price"
+            }
+        ));
+        jScrollPane2.setViewportView(table1);
+
+        jTabbedPane1.addTab("approved", jScrollPane2);
+
+        table2.setBackground(new java.awt.Color(255, 153, 0));
+        table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "id", "title", "name", "price"
+            }
+        ));
+        jScrollPane1.setViewportView(table2);
+
+        jTabbedPane1.addTab("not approved yet", jScrollPane1);
+
+        jLabel2.setBackground(new java.awt.Color(255, 153, 0));
+        jLabel2.setFont(new java.awt.Font("Kannada MN", 3, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setText("findEVERYTHING");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/banner.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-xbox-x-30.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)))
+                .addGap(2, 2, 2)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        new user_pr_350().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +226,13 @@ public class PM_350 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable table1;
+    private javax.swing.JTable table2;
     // End of variables declaration//GEN-END:variables
 }

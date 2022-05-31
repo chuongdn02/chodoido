@@ -46,7 +46,6 @@ public class Handling {
         return PrData;
     }
 
-
     public static WLine GetWLine(int id) {
         WLine PrD = new WLine();
         Connection conn = connection.getJDBCConnection();
@@ -223,7 +222,7 @@ public class Handling {
         }
     }
 
- public static void AddNewProductWLine(WLine PrD) {
+    public static void AddNewProductWLine(WLine PrD) {
         Connection conn = connection.getJDBCConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("insert into WLine(id,name,price,title,des) value(?,?,?,?,?)");
@@ -313,7 +312,8 @@ public class Handling {
         }
         return de;
     }
-        public static Detail getInfouser(int id) {
+
+    public static Detail getInfouser(int id) {
         Detail de = new Detail();
         Connection conn = connection.getJDBCConnection();
         try {
@@ -331,6 +331,50 @@ public class Handling {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
         }
         return de;
+    }
+
+    public static List<product> GetAllproductPM(int id) {
+        List<product> PrData = new ArrayList<product>();
+        Connection conn = connection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from product where id = " + id);
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                product PrD = new product();
+                PrD.setname(result.getString("name"));
+                PrD.setprice(result.getString("price"));
+                PrD.setdes(result.getString("des"));
+                PrD.settitle(result.getString("title"));
+                PrData.add(PrD);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return PrData;
+    }
+
+    public static List<product> GetAllproductPM2(int id) {
+        List<product> PrData = new ArrayList<product>();
+        Connection conn = connection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from WLine where id = " + id);
+            ResultSet result = ps.executeQuery();
+
+            while (result.next()) {
+                product PrD = new product();
+                PrD.setname(result.getString("name"));
+                PrD.setprice(result.getString("price"));
+                PrD.setdes(result.getString("des"));
+                PrD.settitle(result.getString("title"));
+                PrData.add(PrD);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return PrData;
     }
 
     public static void SelectID(int id) {
@@ -441,6 +485,6 @@ public class Handling {
         a.setprice("fsdfs");
         a.settitle("sdfs");
         AddNewProductWLine(a);
-        
+
     }
 }
