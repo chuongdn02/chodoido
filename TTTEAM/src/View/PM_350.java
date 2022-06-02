@@ -30,8 +30,7 @@ public class PM_350 extends javax.swing.JFrame {
         Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
         int id = Handling.getIDPhone();
-        Handling.SelectID(id);
-        int ad = Handling.getID();
+      
         tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -44,7 +43,7 @@ public class PM_350 extends javax.swing.JFrame {
         tableModel.addColumn("name");
         tableModel.addColumn("price");
         table1.setModel(tableModel);
-        SetModelTable(handle.GetAllproductPM(ad));
+        SetModelTable(handle.GetAllproductPM(id));
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table1.getColumnModel().getColumn(0).setPreferredWidth(300);
         table1.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -63,7 +62,7 @@ public class PM_350 extends javax.swing.JFrame {
         tableModel2.addColumn("name");
         tableModel2.addColumn("price");
         table2.setModel(tableModel2);
-        SetModelTable2(handle.GetAllproductPM2(ad));
+        SetModelTable2(handle.GetAllproductPM2(id));
         table2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table2.getColumnModel().getColumn(0).setPreferredWidth(300);
         table2.getColumnModel().getColumn(1).setPreferredWidth(200);

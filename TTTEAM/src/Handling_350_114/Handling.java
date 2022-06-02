@@ -295,7 +295,7 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
         try {
             //String sql = "select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = 1";
-            PreparedStatement preparedStatement = conn.prepareStatement("select * from user join product on user.id = product.id where product.idProduct = " + id);
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from user join product on user.id = product.id where product.id  = " + id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 de.setTitle(resultSet.getString("title"));

@@ -198,7 +198,6 @@ public class ADD_333 extends javax.swing.JFrame {
                     "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
         WLine pro = new WLine();
         pro.setIdUser(Handling.getIDPhone());
         pro.setname(name.getText());
@@ -216,6 +215,7 @@ public class ADD_333 extends javax.swing.JFrame {
     }//GEN-LAST:event_titleActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+       new user_pr_350().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 

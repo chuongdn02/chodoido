@@ -21,17 +21,17 @@ public class user_pr_350 extends javax.swing.JFrame {
 
     DefaultTableModel tableModel;
     Handling handle;
-
+    
     /**
      * Creates new form MainForm
      */
     public user_pr_350() {
         handle = new Handling();
+        
         initComponents();
         setLocation(400, 300);
         Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
-
         tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {

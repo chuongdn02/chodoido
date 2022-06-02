@@ -182,7 +182,7 @@ public class detail_350 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
-        Handling.RemoveID(Handling.getID());
+
         new user_pr_350().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_doneActionPerformed

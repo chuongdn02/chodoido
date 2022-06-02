@@ -40,7 +40,6 @@ public class admin_pr_114 extends javax.swing.JFrame {
 
         };
         tableModel.addColumn("id");
-
         tableModel.addColumn("title");
         tableModel.addColumn("name");
         tableModel.addColumn("price");
