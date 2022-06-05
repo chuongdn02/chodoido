@@ -295,7 +295,7 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
         try {
             //String sql = "select title, price, des, user.name, phone, adr from user join product on user.id = product.id where product.idProduct = 1";
-            PreparedStatement preparedStatement = conn.prepareStatement("select * from user join product on user.id = product.id where product.id  = " + id);
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from user join product on user.id = product.id where product.idProduct  = " + id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 de.setTitle(resultSet.getString("title"));
@@ -381,7 +381,6 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
         try {
             //String sql = "insert into selectID values(?)";
-
             PreparedStatement preparedStatement = conn.prepareStatement("insert into selectID(id) value(?)");
             preparedStatement.setInt(1, id);
             int result = preparedStatement.executeUpdate();
@@ -399,6 +398,7 @@ public class Handling {
 
             while (resultSet.next()) {
                 id = resultSet.getInt("id");
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
@@ -406,24 +406,23 @@ public class Handling {
         return id;
     }
 
-    public static void RemoveID(int id) {
-        Connection conn = connection.getJDBCConnection();
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID where id =?");
-            preparedStatement.setInt(1, id);
-            int result = preparedStatement.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+//    public static void RemoveID(int id) {
+//        Connection conn = connection.getJDBCConnection();
+//        try {
+//            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID where id =?");
+//            preparedStatement.setInt(1, id);
+//            int result = preparedStatement.executeUpdate();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     public static void SelectPhone(String phone) {
         Connection conn = connection.getJDBCConnection();
         try {
             //String sql = "insert into selectID values(?)";
 
-            PreparedStatement preparedStatement = conn.prepareStatement("insert into selectID(phoneNumber) values(?)");
+            PreparedStatement preparedStatement = conn.prepareStatement("insert into selectphone(phoneNumber) values(?)");
             preparedStatement.setString(1, phone);
             int result = preparedStatement.executeUpdate();
 
@@ -436,7 +435,7 @@ public class Handling {
         Connection conn = connection.getJDBCConnection();
         String phone = null;
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement("select phoneNumber from selectID");
+            PreparedStatement preparedStatement = conn.prepareStatement("select phoneNumber from selectphone");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -465,26 +464,15 @@ public class Handling {
         return id;
     }
 
-    public static void RemovePhone() {
-        Connection conn = connection.getJDBCConnection();
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID");
-
-            int result = preparedStatement.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public static void main(String[] args) {
-        WLine a = new WLine();
-        a.setIdUser(2);
-        a.setdes("sdfs");
-        a.setname("trung");
-        a.setprice("fsdfs");
-        a.settitle("sdfs");
-        AddNewProductWLine(a);
-
-    }
+//    public static void RemovePhone() {
+//        Connection conn = connection.getJDBCConnection();
+//        try {
+//            PreparedStatement preparedStatement = conn.prepareStatement("delete from selectID");
+//
+//            int result = preparedStatement.executeUpdate();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Handling.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 }

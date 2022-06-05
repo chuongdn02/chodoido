@@ -48,10 +48,9 @@ public class home_333 extends javax.swing.JFrame {
         table.setModel(tableModel);
         SetModelTable(handle.GetAllproduct());
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        table.getColumnModel().getColumn(0).setPreferredWidth(300);
+        table.getColumnModel().getColumn(0).setPreferredWidth(294);
         table.getColumnModel().getColumn(1).setPreferredWidth(200);
         table.getColumnModel().getColumn(2).setPreferredWidth(100);
-
     }
 
     public void SetModelTable(List<product> PrDatas) {

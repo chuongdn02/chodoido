@@ -14,17 +14,18 @@ import model_114.product;
  * @author macpro
  */
 public class detail_350 extends javax.swing.JFrame {
- Handling handle;
+
+    Handling handle;
 
     /**
      * Creates new form MainForm
      */
     public detail_350() {
-        
-        setLocation(400,300);
-        Color mycolor = new Color(255,153,0);
+
+        setLocation(400, 300);
+        Color mycolor = new Color(255, 153, 0);
         this.getContentPane().setBackground(mycolor);
-        initComponents();       
+        initComponents();
         Detail getInfo = new Detail();
         int id = Handling.getID();
         getInfo = Handling.getInfo(id);
@@ -182,7 +183,6 @@ public class detail_350 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
-
         new user_pr_350().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_doneActionPerformed
