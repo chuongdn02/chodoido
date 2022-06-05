@@ -1,14 +1,14 @@
 CREATE TABLE admin(
 	id INT NOT NULL AUTO_INCREMENT,
-    pass VARCHAR(45) NULL,
+    pass VARCHAR(45) NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE user (
 	  id INT NOT NULL AUTO_INCREMENT,
 	  phone VARCHAR(11) NOT NULL,
-	  pass VARCHAR(45) NULL,
-	  name VARCHAR(45) NULL,
+	  pass VARCHAR(45) NOT NULL,
+	  name VARCHAR(45) NOT NULL,
 	  adr VARCHAR(200) NULL,
 	  sex VARCHAR(5) NULL,
 	  PRIMARY KEY (id,phone)
@@ -38,6 +38,9 @@ CREATE TABLE product (
   CREATE TABLE SelectID (
   id INT NULL,
   phoneNumber VARCHAR(11) NULL);
+    CREATE TABLE selectphone (
+  phoneNumber VARCHAR(11) NULL);
+  
   
   -- insert 
 INSERT INTO user (phone, pass, name, adr, sex) VALUES ('0905416010', '123', 'Trung', 'ĐN', 'nam');
